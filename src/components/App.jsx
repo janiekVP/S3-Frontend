@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './Home';
 import UserList from './Users/UserList';
 import UserPage from './Users/UserPage';
+import UserEdit from './Users/UserEdit';
 import ItemList from './Items/ItemList';
 
 
@@ -17,6 +18,7 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='items' element={<ItemList/>} />
           <Route path='users' element={<UserList/>}/>
+          <Route path='users/edit/:id' element={<UserEdit/>}/>  
           <Route path='users/:id' element={<UserPage/>}/>  
         </Routes>
       </div>
