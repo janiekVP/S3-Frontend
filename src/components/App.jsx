@@ -7,6 +7,8 @@ import UserList from './Users/UserList';
 import UserPage from './Users/UserPage';
 import UserEdit from './Users/UserEdit';
 import ItemList from './Items/ItemList';
+import ItemPage from './Items/ItemPage';
+import ItemEdit from './Items/ItemEdit';
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='items' element={<ItemList/>} />
+          <Route path='items/edit/:id' element={<ItemEdit/>}/>  
+          <Route path='items/:id' element={<ItemPage/>}/> 
           <Route path='users' element={<UserList/>}/>
           <Route path='users/edit/:id' element={<UserEdit/>}/>  
           <Route path='users/:id' element={<UserPage/>}/>  
