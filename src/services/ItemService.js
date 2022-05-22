@@ -48,7 +48,7 @@ class ItemSevice {
     }
 
     Update(item){
-        axios.put('http://localhost:8080/items/'+ (item.id), item)
+        axios.put('http://localhost:8080/api/items/'+ (item.id), item)
           .then((response) => {
             console.log(response);
           })

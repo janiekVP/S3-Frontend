@@ -20,12 +20,6 @@ class UserList extends Component {
             UserService.Delete(id)
             let updatedUsers = [...this.state.users].filter(i => i.id !== id);
             this.setState({users: updatedUsers})
-        
-            .then(response => response.json())
-            .then(user => {
-            this.props.deleteItemFromState(id)
-          })
-          .catch(err => console.log(err))
         }  
       }
 
@@ -44,6 +38,7 @@ class UserList extends Component {
                 <td>
                     <ButtonGroup>
                         <Button size="sm" color="primary" tag={Link} to={"/users/" + user.id}>Details</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"/users/edit/" + user.id}>Edit</Button>
                         <Button size="sm" color="danger" onClick={() => this.deleteItem(user.id)}>Delete</Button>
                     </ButtonGroup>
                 </td>

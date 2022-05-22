@@ -7,7 +7,7 @@ class Home extends Component {
         return (
             <div>
                 <Container fluid>
-                    <Button color="link"><Link to="users">Users</Link></Button>
+                    <h1>WELCOME</h1>
                 </Container>
             </div>
         );
