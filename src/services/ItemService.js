@@ -18,10 +18,10 @@ class ItemSevice {
     }
 
     GetById(id){
-        var url = baseURL + id.toString();
+        // var url = baseURL + id.toString();
 
         try{
-            return axios.get(url);
+            return axios.get('http://localhost:8080/api/items/'+ (id));
         }
         catch{
             console.log('failed to get data');

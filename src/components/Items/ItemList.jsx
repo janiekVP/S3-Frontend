@@ -20,12 +20,6 @@ class ItemList extends Component {
             ItemService.Delete(id)
             let updatedItems = [...this.state.items].filter(i => i.id !== id);
             this.setState({items: updatedItems})
-        
-            .then(response => response.json())
-            .then(items => {
-            this.props.deleteItemFromState(id)
-          })
-          .catch(err => console.log(err))
         }  
       }
 
@@ -42,7 +36,8 @@ class ItemList extends Component {
                 <td>{item.description}</td>
                 <td>
                     <ButtonGroup>
-                        <Button size="sm" color="primary" tag={Link} to={"/api/items/" + item.id}>Edit</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"/items/" + item.id}>Details</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"/items/edit/" + item.id}>Edit</Button>
                         <Button size="sm" color="danger" onClick={() => this.deleteItem(item.id)}>Delete</Button>
                     </ButtonGroup>
                 </td>
