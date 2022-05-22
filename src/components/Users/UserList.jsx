@@ -20,12 +20,6 @@ class UserList extends Component {
             UserService.Delete(id)
             let updatedUsers = [...this.state.users].filter(i => i.id !== id);
             this.setState({users: updatedUsers})
-        
-            // .then(response => response.json())
-        //     .then(user => {
-        //     this.props.deleteItemFromState(id)
-        //   })
-        //.catch(err => console.log(err))
         }  
       }
 
