@@ -1,15 +1,23 @@
 import React from 'react';
-import UserService from '../../services/UserService';
 import { useState, useEffect } from "react";
-import {useParams, useNavigate} from 'react-router-dom';
-import ItemService from '../../services/ItemService';
+import {useNavigate} from 'react-router-dom';
+import UserService from '../../services/UserService';
+//import ItemService from '../../services/ItemService'
 
-function UserPage() {
-    const inputvalues = { id: 0, userName: '', email: '', favorite: ''};
+function UserCreate() {
+
+    const inputvalues = {   userName: '', email: '', favorite: 0};
     const [user, setUser] = useState(inputvalues);
-    const [items, setItem] = useState([]);
+    // const [items, setItems] = useState([]);
     const navigate = useNavigate();
-    const { id } = useParams();
+
+    useEffect(() => {
+        // ItemService.GetAllItems().then((result) => {
+        //     setItems(result.data)
+        //     console.log(result.data);
+        //     console.log(items);
+        // })
+      }, []);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -17,42 +25,31 @@ function UserPage() {
         console.log(user);
       };
 
-    useEffect(() => {
-        UserService.GetById(id)
-        .then(resp => {
-          const { id, userName, email, favorite} = resp.data
-          setUser({ id, userName, email, favorite})
-          })
-        ItemService.GetAllItems()
-        .then(resp => {
-          setItem(resp.data)
-       
-          console.log(resp.data);
-          })
-        }, []);
+    // const listItems = items.map(item => {
+    //     return <option key={item.id} value={item.id}>{item.name}</option>
+    // });
 
-        const handleSubmit = e => {
+    const handleSubmit = e => {
         e.preventDefault();
             const currentUser = {
-                id: user.id,
                 userName: user.userName,
                 email: user.email,
                 favorite: user.favorite
             }
             console.log(currentUser);
-            UserService.Update(currentUser)
+            UserService.CreateUser(currentUser)
                 return navigate('/');   
             }
 
-        return ( 
-            <div className='container'>
+    return ( 
+        <div className='container'>
                 <form onSubmit={handleSubmit}>
                     <div className='profile-container'>
                     <label className="label">username</label>
                     <input
                         onChange={handleChange}
                         className="form-control"
-                        defaultValue={user.userName || ''}
+                        defaultValue={''}
                         name="userName"
                         type="text"
                     /></div>
@@ -62,16 +59,26 @@ function UserPage() {
                     <input
                         onChange={handleChange}
                         className="form-control"
-                        defaultValue={user.email || ''}
+                        defaultValue={''}
                         name="email"
                         type="text"
                     /></div>
+
+                    {/* <div className='profile-container'>
+                    <label className="label">favorite</label>
+                    <select 
+                        id = "dropdown"
+                        onChange={handleChange}
+                        name="favorite">
+                        {listItems}
+                    </select>
+                    </div> */}
+
                     
                     <button className="btn btn-primary" type="submit">Submit</button>
                 </form>
             </div>
-         );
-    }
-
+    )
+}
  
-export default UserPage;
+export default UserCreate;

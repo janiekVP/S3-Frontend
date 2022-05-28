@@ -34,7 +34,7 @@ class UserList extends Component {
             return <tr key={user.id}>
                 <td style={{whiteSpace: 'nowrap'}}>{user.userName}</td>
                 <td>{user.email}</td>
-                <td>{user.favorite.name}</td>
+                <td>{'' || user?.favorite?.name}</td>
                 <td>
                     <ButtonGroup>
                         <Button size="sm" color="primary" tag={Link} to={"/users/" + user.id}>Details</Button>
@@ -49,7 +49,7 @@ class UserList extends Component {
             <div>
                 <Container fluid>
                     <div className="float-right">
-                        <Button color="success" tag={Link} to="/api/users/">Add User</Button>
+                        <Button color="success" tag={Link} to={"/users/create"}>Add User</Button>
                     </div>
                     <h3>Users</h3>
                     <Table className="mt-4">
