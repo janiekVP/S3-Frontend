@@ -66,10 +66,9 @@ class UserSevice {
     }
 
     CreateUser(user){
-        axios.post(baseURL, {
-            userName: user.userName,
-            email: user.email,
-            favorite: user.favorite
+        axios.post('http://localhost:8080/api/users', {
+          userName: user.userName,
+          email: user.email
         })
         .then((response) => {
             console.log(response);

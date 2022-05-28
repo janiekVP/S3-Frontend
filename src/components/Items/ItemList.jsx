@@ -48,7 +48,7 @@ class ItemList extends Component {
             <div>
                 <Container fluid>
                     <div className="float-right">
-                        <Button color="success" tag={Link} to="/api/items/">Add Item</Button>
+                        <Button color="success" tag={Link} to="/items/create">Add Item</Button>
                     </div>
                     <h3>Items</h3>
                     <Table className="mt-4">

@@ -24,7 +24,7 @@ function UserPage() {
                 <div className='profile-container'>
                     <p>{user.userName}</p>
                     <p>{user.email}</p>
-                    <p>{user.favorite.name}</p>
+                    <p>{'' || user?.favorite?.name}</p>
                 </div>
             </div>
          );
