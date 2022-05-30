@@ -3,6 +3,7 @@ import React from 'react';
 import Header from './Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './Home';
+import ChatRoom from './ChatRoom';
 import UserList from './Users/UserList';
 import UserPage from './Users/UserPage';
 import UserEdit from './Users/UserEdit';
@@ -20,6 +21,7 @@ function App() {
         <Header/>
         <Routes>
           <Route path='/' element={<Home/>}/>
+          <Route path='chatroom' element={<ChatRoom/>}/>
           <Route path='items' element={<ItemList/>} />
           <Route path='items/create' element={<ItemCreate/>}/>
           <Route path='items/edit/:id' element={<ItemEdit/>}/>  
