@@ -47,8 +47,8 @@ class UserSevice {
         });
     }
 
-    Update(id){
-        axios.put('http://localhost:8080/users/'+ (id), id)
+    Update(user){
+        axios.put('http://localhost:8080/api/users/'+ (user.id), user)
           .then((response) => {
             console.log(response);
           })
@@ -66,10 +66,9 @@ class UserSevice {
     }
 
     CreateUser(user){
-        axios.post(baseURL, {
-            userName: user.userName,
-            email: user.email,
-            favorite: user.favorite
+        axios.post('http://localhost:8080/api/users', {
+          userName: user.userName,
+          email: user.email
         })
         .then((response) => {
             console.log(response);

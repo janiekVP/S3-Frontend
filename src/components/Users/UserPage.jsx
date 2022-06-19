@@ -1,32 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import UserService from '../../services/UserService';
+import { useState, useEffect } from "react";
+import {useParams, useNavigate} from 'react-router-dom';
 
-class UserPage extends Component {
+function UserPage() {
+    const inputvalues = { id: 0, userName: '', email: '', favorite: ''};
+    const [user, setUser] = useState(inputvalues);
+    const navigate = useNavigate();
+    const { id } = useParams();
 
-    constructor(props) {
-        super(props);
-        this.state = {user:[]}
-    }
-//krijgt de id niet mee
-    componentDidMount(){
-        var userId = this.props.userId;
 
-        UserService.GetById(userId).then((response) => {
-            this.setState({user: response.data});
-            console.log(this.state.user);
-        });
-    }
+        useEffect(() => {
+            UserService.GetById(id)
+            .then(resp => {
+              const { id, userName, email, favorite} = resp.data
+              setUser({ id, userName, email, favorite})
+            })
+          }, []);
     
-    render() { 
+
         return ( 
             <div className='container'>
                 <div className='profile-container'>
-                    <p>{this.state.userName}</p>
-                    <p>{this.state.email}</p>
+                    <p>{user.userName}</p>
+                    <p>{user.email}</p>
+                    <p>{'' || user?.favorite?.name}</p>
                 </div>
             </div>
          );
     }
-}
+
  
 export default UserPage;

@@ -1,12 +1,12 @@
 import axios from "axios";
 
 
-const baseURL = 'http://localhost:8080/api/items';
+const baseURL = 'http://localhost:8080/api/collections';
 
 
-class ItemSevice {
+class CollectionSevice {
 
-    GetAllItems(){
+    GetAllCollections(){
         try{
             var data = axios.get(baseURL)
             return data;
@@ -18,10 +18,8 @@ class ItemSevice {
     }
 
     GetById(id){
-        // var url = baseURL + id.toString();
-
         try{
-            return axios.get('http://localhost:8080/api/items/'+ (id));
+            return axios.get('http://localhost:8080/api/collections/'+ (id));
         }
         catch{
             console.log('failed to get data');
@@ -30,7 +28,7 @@ class ItemSevice {
     }
 
     Delete(id){
-        axios.delete('http://localhost:8080/api/items/'+ (id))
+        axios.delete('http://localhost:8080/api/collections/'+ (id))
         .then((response) => {
           console.log(response);
         })
@@ -47,8 +45,8 @@ class ItemSevice {
         });
     }
 
-    Update(item){
-        axios.put('http://localhost:8080/api/items/'+ (item.id), item)
+    Update(collection){
+        axios.put('http://localhost:8080/api/collections/'+ (collection.id), collection)
           .then((response) => {
             console.log(response);
           })
@@ -65,10 +63,9 @@ class ItemSevice {
           });
     }
 
-    CreateItem(item){
+    CreateCollection(collection){
         axios.post(baseURL, {
-            name: item.name,
-            description: item.description,
+            userId: collection.userId
         })
         .then((response) => {
             console.log(response);
@@ -79,4 +76,4 @@ class ItemSevice {
     }
 }
 
-export default new ItemSevice();
+export default new CollectionSevice();

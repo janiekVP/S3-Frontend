@@ -14,21 +14,6 @@ class ItemList extends Component {
         })
     }
 
-    deleteItem = id => {
-        let confirmDelete = window.confirm('Delete item forever?')
-        if(confirmDelete){
-            ItemService.Delete(id)
-            let updatedItems = [...this.state.items].filter(i => i.id !== id);
-            this.setState({items: updatedItems})
-        
-            .then(response => response.json())
-            .then(items => {
-            this.props.deleteItemFromState(id)
-          })
-          .catch(err => console.log(err))
-        }  
-      }
-
     render() { 
         const {items, isLoading} = this.state;
     
@@ -42,8 +27,7 @@ class ItemList extends Component {
                 <td>{item.description}</td>
                 <td>
                     <ButtonGroup>
-                        <Button size="sm" color="primary" tag={Link} to={"/api/items/" + item.id}>Edit</Button>
-                        <Button size="sm" color="danger" onClick={() => this.deleteItem(item.id)}>Delete</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"/items/" + item.id}>Details</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -52,9 +36,6 @@ class ItemList extends Component {
         return ( 
             <div>
                 <Container fluid>
-                    <div className="float-right">
-                        <Button color="success" tag={Link} to="/api/items/">Add Item</Button>
-                    </div>
                     <h3>Items</h3>
                     <Table className="mt-4">
                         <thead>

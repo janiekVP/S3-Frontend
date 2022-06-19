@@ -14,6 +14,8 @@ const Header = () => {
                         <li><Link to='/' className='nav-link px-2 text-lpurple'>Home</Link></li>
                         <li><Link to='/items' className='nav-link px-2 text-lpurple'>Items</Link></li>
                         <li><Link to='/users' className='nav-link px-2 text-lpurple'>Users</Link></li>
+                        <li><Link to='/collections/1' className='nav-link px-2 text-lpurple'>Collection</Link></li>
+                        <li><Link to='/chatroom' className='nav-link px-2 text-lpurple'>ChatRoom</Link></li>
                     </ul>
 
 
