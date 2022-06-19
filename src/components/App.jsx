@@ -10,8 +10,7 @@ import UserEdit from './Users/UserEdit';
 import UserCreate from './Users/UserCreate';
 import ItemList from './Items/ItemList';
 import ItemPage from './Items/ItemPage';
-import ItemEdit from './Items/ItemEdit';
-import ItemCreate from './Items/ItemCreate';
+import CollectionPage from './Collections/CollectionPage';
 
 
 function App() {
@@ -23,13 +22,12 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='chatroom' element={<ChatRoom/>}/>
           <Route path='items' element={<ItemList/>} />
-          <Route path='items/create' element={<ItemCreate/>}/>
-          <Route path='items/edit/:id' element={<ItemEdit/>}/>  
           <Route path='items/:id' element={<ItemPage/>}/> 
           <Route path='users' element={<UserList/>}/>
           <Route path='users/create' element={<UserCreate/>}/>
           <Route path='users/edit/:id' element={<UserEdit/>}/>  
-          <Route path='users/:id' element={<UserPage/>}/>  
+          <Route path='users/:id' element={<UserPage/>}/> 
+          <Route path='collections/:id' element={<CollectionPage/>}/> 
         </Routes>
       </div>
     </Router>
